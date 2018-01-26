@@ -1,0 +1,12 @@
+PODS:
+  - CDAlertView (0.7.0)
+
+DEPENDENCIES:
+  - CDAlertView
+
+SPEC CHECKSUMS:
+  CDAlertView: fdef4dbbdafd1481c18f5db64dac2d321f3b8cbb
+
+PODFILE CHECKSUM: 45e63c38baddb2bbedc52c89c872c170c10e7017
+
+COCOAPODS: 1.4.0
