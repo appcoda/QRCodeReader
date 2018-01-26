@@ -39,8 +39,8 @@ class QRScannerController: UIViewController {
         // Get the back-facing camera for capturing videos
         let deviceDiscoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInDualCamera], mediaType: AVMediaType.video, position: .back)
         
-        guard let captureDevice = deviceDiscoverySession.devices.first else {
-            print("Failed to get the camera device")
+        guard let captureDevice = AVCaptureDevice.default(for: AVMediaType.video) else {
+            //MARK: - Add alert
             return
         }
         

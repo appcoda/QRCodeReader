@@ -99,7 +99,7 @@
 				TargetAttributes = {
 					F4F09DB21DAF669400026BB2 = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = YZP52RND5S;
+						DevelopmentTeam = TALWF53E28;
 						LastSwiftMigration = 0910;
 						ProvisioningStyle = Automatic;
 					};
@@ -280,10 +280,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = YZP52RND5S;
+				DEVELOPMENT_TEAM = TALWF53E28;
 				INFOPLIST_FILE = QRCodeReader/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.appcoda.QRCodeReader;
+				PRODUCT_BUNDLE_IDENTIFIER = "darkhonbek-QRCodeReader";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 4.0;
@@ -294,10 +294,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = YZP52RND5S;
+				DEVELOPMENT_TEAM = TALWF53E28;
 				INFOPLIST_FILE = QRCodeReader/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.appcoda.QRCodeReader;
+				PRODUCT_BUNDLE_IDENTIFIER = "darkhonbek-QRCodeReader";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Off;
 				SWIFT_VERSION = 4.0;
