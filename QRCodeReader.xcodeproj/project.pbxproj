@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2079BEAD201B89B1009A9D89 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2079BEAC201B89B1009A9D89 /* AlertManager.swift */; };
+		2079BEB0201B8A1B009A9D89 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2079BEAF201B8A1B009A9D89 /* User.swift */; };
+		20C25067201C918D0053A7CA /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C25066201C918D0053A7CA /* UserManager.swift */; };
 		74EC4DF29788FAB13BD71C60 /* Pods_QRCodeReader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93C5E90130B3030F9A6C3C82 /* Pods_QRCodeReader.framework */; };
 		F4F09DB71DAF669400026BB2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4F09DB61DAF669400026BB2 /* AppDelegate.swift */; };
 		F4F09DBC1DAF669400026BB2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F4F09DBA1DAF669400026BB2 /* Main.storyboard */; };
@@ -17,6 +20,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2079BEAC201B89B1009A9D89 /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
+		2079BEAF201B8A1B009A9D89 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		20C25066201C918D0053A7CA /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
 		53012B081E7FB5C8A018426D /* Pods-QRCodeReader.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRCodeReader.debug.xcconfig"; path = "Pods/Target Support Files/Pods-QRCodeReader/Pods-QRCodeReader.debug.xcconfig"; sourceTree = "<group>"; };
 		7442DA045D437C754A56FB95 /* Pods-QRCodeReader.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QRCodeReader.release.xcconfig"; path = "Pods/Target Support Files/Pods-QRCodeReader/Pods-QRCodeReader.release.xcconfig"; sourceTree = "<group>"; };
 		93C5E90130B3030F9A6C3C82 /* Pods_QRCodeReader.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QRCodeReader.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -42,6 +48,50 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2079BEAE201B89FE009A9D89 /* Supporting files */ = {
+			isa = PBXGroup;
+			children = (
+				F4F09DB61DAF669400026BB2 /* AppDelegate.swift */,
+				F4F09DBD1DAF669400026BB2 /* Assets.xcassets */,
+			);
+			path = "Supporting files";
+			sourceTree = "<group>";
+		};
+		2079BEB1201B8BAA009A9D89 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				2079BEAF201B8A1B009A9D89 /* User.swift */,
+				20C25066201C918D0053A7CA /* UserManager.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		2079BEB2201B8BB6009A9D89 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				F4F09DC81DAF6A3800026BB2 /* QRCodeViewController.swift */,
+				F4F09DCA1DAF6A4F00026BB2 /* QRScannerController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		2079BEB3201B8BDC009A9D89 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				2079BEAC201B89B1009A9D89 /* AlertManager.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		2079BEB4201B8C03009A9D89 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				F4F09DBA1DAF669400026BB2 /* Main.storyboard */,
+				F4F09DBF1DAF669400026BB2 /* LaunchScreen.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		714170AC034793829648BE72 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -80,13 +130,12 @@
 		F4F09DB51DAF669400026BB2 /* QRCodeReader */ = {
 			isa = PBXGroup;
 			children = (
-				F4F09DB61DAF669400026BB2 /* AppDelegate.swift */,
-				F4F09DBA1DAF669400026BB2 /* Main.storyboard */,
-				F4F09DBD1DAF669400026BB2 /* Assets.xcassets */,
-				F4F09DBF1DAF669400026BB2 /* LaunchScreen.storyboard */,
 				F4F09DC21DAF669400026BB2 /* Info.plist */,
-				F4F09DC81DAF6A3800026BB2 /* QRCodeViewController.swift */,
-				F4F09DCA1DAF6A4F00026BB2 /* QRScannerController.swift */,
+				2079BEB2201B8BB6009A9D89 /* Controller */,
+				2079BEB1201B8BAA009A9D89 /* Entity */,
+				2079BEB3201B8BDC009A9D89 /* Service */,
+				2079BEB4201B8C03009A9D89 /* View */,
+				2079BEAE201B89FE009A9D89 /* Supporting files */,
 			);
 			path = QRCodeReader;
 			sourceTree = "<group>";
@@ -222,8 +271,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2079BEAD201B89B1009A9D89 /* AlertManager.swift in Sources */,
 				F4F09DC91DAF6A3800026BB2 /* QRCodeViewController.swift in Sources */,
 				F4F09DB71DAF669400026BB2 /* AppDelegate.swift in Sources */,
+				2079BEB0201B8A1B009A9D89 /* User.swift in Sources */,
+				20C25067201C918D0053A7CA /* UserManager.swift in Sources */,
 				F4F09DCB1DAF6A4F00026BB2 /* QRScannerController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

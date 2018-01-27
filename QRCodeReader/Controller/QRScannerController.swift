@@ -8,13 +8,16 @@
 
 import UIKit
 import AVFoundation
+import CDAlertView
 
 class QRScannerController: UIViewController {
 
     @IBOutlet var messageLabel:UILabel!
     @IBOutlet var topbar: UIView!
-    
+    private let metadataObjectsOverlayLayersDrawingSemaphore = DispatchSemaphore(value: 1)
+    private var semaphore: Int = 1
     var captureSession = AVCaptureSession()
+    var userManager: UserManager?
     
     var videoPreviewLayer: AVCaptureVideoPreviewLayer?
     var qrCodeFrameView: UIView?
@@ -38,6 +41,11 @@ class QRScannerController: UIViewController {
 
         // Get the back-facing camera for capturing videos
         let deviceDiscoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInDualCamera], mediaType: AVMediaType.video, position: .back)
+
+        //MARK: - Fake data init
+        let user = User("u1510429", true)
+        let arr = [user.id: user]
+        userManager = UserManager(users: arr)
         
         guard let captureDevice = AVCaptureDevice.default(for: AVMediaType.video) else {
             //MARK: - Add alert
@@ -124,7 +132,8 @@ class QRScannerController: UIViewController {
 }
 
 extension QRScannerController: AVCaptureMetadataOutputObjectsDelegate {
-    
+
+    /*
     func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
         // Check if the metadataObjects array is not nil and it contains at least one object.
         if metadataObjects.count == 0 {
@@ -141,9 +150,56 @@ extension QRScannerController: AVCaptureMetadataOutputObjectsDelegate {
             let barCodeObject = videoPreviewLayer?.transformedMetadataObject(for: metadataObj)
             qrCodeFrameView?.frame = barCodeObject!.bounds
             
-            if metadataObj.stringValue != nil {
-                launchApp(decodedURL: metadataObj.stringValue!)
+            if metadataObj.stringValue != nil && QRScannerController.semaphore == 1 {
+//                launchApp(decodedURL: metadataObj.stringValue!)
                 messageLabel.text = metadataObj.stringValue
+                AlertManager.showNotFoundAlert()
+            }
+        }
+    }
+ */
+
+    func metadataOutput(_ output: AVCaptureMetadataOutput, didOutput metadataObjects: [AVMetadataObject], from connection: AVCaptureConnection) {
+        // wait() is used to drop new notifications if old ones are still processing, to avoid queueing up a bunch of stale data.
+        if semaphore == 1 {
+            self.semaphore -= 1
+            DispatchQueue.main.async {
+                if metadataObjects.count == 0 {
+                    self.qrCodeFrameView?.frame = CGRect.zero
+                    self.messageLabel.text = "No QR code is detected"
+                    return
+                }
+
+                // Get the metadata object.
+                let metadataObj = metadataObjects[0] as! AVMetadataMachineReadableCodeObject
+
+                if self.supportedCodeTypes.contains(metadataObj.type) {
+                    // If the found metadata is equal to the QR code metadata (or barcode) then update the status label's text and set the bounds
+                    let barCodeObject = self.videoPreviewLayer?.transformedMetadataObject(for: metadataObj)
+                    self.qrCodeFrameView?.frame = barCodeObject!.bounds
+
+                    if metadataObj.stringValue != nil {
+
+                        // launchApp(decodedURL: metadataObj.stringValue!)
+
+                        self.messageLabel.text = metadataObj.stringValue
+                        if let manager = self.userManager,
+                            let id = metadataObj.stringValue{
+                            let alertType = manager.checkUser(with: id)
+                            let view = AlertManager.showAlert(of: alertType)
+                            view.show({ (completedView) in
+                                self.semaphore += 1
+                            })
+                        } else {
+                            self.semaphore += 1
+                        }
+
+                    } else {
+                        self.semaphore += 1
+                    }
+                } else {
+                    self.semaphore += 1
+                }
             }
         }
     }
