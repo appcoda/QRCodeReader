@@ -17,11 +17,8 @@ class QRScannerController: UIViewController {
     private let metadataObjectsOverlayLayersDrawingSemaphore = DispatchSemaphore(value: 1)
     private var semaphore: Int = 1
     var captureSession = AVCaptureSession()
-    var userManager: UserManager?
-    
     var videoPreviewLayer: AVCaptureVideoPreviewLayer?
     var qrCodeFrameView: UIView?
-
     private let supportedCodeTypes = [AVMetadataObject.ObjectType.upce,
                                       AVMetadataObject.ObjectType.code39,
                                       AVMetadataObject.ObjectType.code39Mod43,
@@ -35,17 +32,19 @@ class QRScannerController: UIViewController {
                                       AVMetadataObject.ObjectType.dataMatrix,
                                       AVMetadataObject.ObjectType.interleaved2of5,
                                       AVMetadataObject.ObjectType.qr]
+
+    lazy var userManager: UserManager = {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let manager = appDelegate.userManager
+
+        return manager
+    }()
    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Get the back-facing camera for capturing videos
         let deviceDiscoverySession = AVCaptureDevice.DiscoverySession(deviceTypes: [.builtInDualCamera], mediaType: AVMediaType.video, position: .back)
-
-        //MARK: - Fake data init
-        let user = User("u1510429", true)
-        let arr = [user.id: user]
-        userManager = UserManager(users: arr)
         
         guard let captureDevice = AVCaptureDevice.default(for: AVMediaType.video) else {
             //MARK: - Add alert
@@ -183,9 +182,8 @@ extension QRScannerController: AVCaptureMetadataOutputObjectsDelegate {
                         // launchApp(decodedURL: metadataObj.stringValue!)
 
                         self.messageLabel.text = metadataObj.stringValue
-                        if let manager = self.userManager,
-                            let id = metadataObj.stringValue{
-                            let alertType = manager.checkUser(with: id)
+                        if let id = metadataObj.stringValue {
+                            let alertType = self.userManager.checkUser(with: id)
                             let view = AlertManager.showAlert(of: alertType)
                             view.show({ (completedView) in
                                 self.semaphore += 1

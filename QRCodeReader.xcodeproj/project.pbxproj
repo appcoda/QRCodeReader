@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2047236A201F861500B863BF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 20472369201F861500B863BF /* GoogleService-Info.plist */; };
 		2079BEAD201B89B1009A9D89 /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2079BEAC201B89B1009A9D89 /* AlertManager.swift */; };
 		2079BEB0201B8A1B009A9D89 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2079BEAF201B8A1B009A9D89 /* User.swift */; };
 		20C25067201C918D0053A7CA /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C25066201C918D0053A7CA /* UserManager.swift */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		20472369201F861500B863BF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2079BEAC201B89B1009A9D89 /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		2079BEAF201B8A1B009A9D89 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		20C25066201C918D0053A7CA /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 		F4F09DB51DAF669400026BB2 /* QRCodeReader */ = {
 			isa = PBXGroup;
 			children = (
+				20472369201F861500B863BF /* GoogleService-Info.plist */,
 				F4F09DC21DAF669400026BB2 /* Info.plist */,
 				2079BEB2201B8BB6009A9D89 /* Controller */,
 				2079BEB1201B8BAA009A9D89 /* Entity */,
@@ -205,6 +208,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F4F09DC11DAF669400026BB2 /* LaunchScreen.storyboard in Resources */,
+				2047236A201F861500B863BF /* GoogleService-Info.plist in Resources */,
 				F4F09DBE1DAF669400026BB2 /* Assets.xcassets in Resources */,
 				F4F09DBC1DAF669400026BB2 /* Main.storyboard in Resources */,
 			);
@@ -254,10 +258,16 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-QRCodeReader/Pods-QRCodeReader-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/CDAlertView/CDAlertView.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CDAlertView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

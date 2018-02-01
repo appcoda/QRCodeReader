@@ -3,7 +3,7 @@
 //  QRCodeReader
 //
 //  Created by Darkhonbek Mamataliev on 26/1/18.
-//  Copyright © 2018 AppCoda. All rights reserved.
+//  Copyright © 2018 Darkhonbek. All rights reserved.
 //
 
 import Foundation
