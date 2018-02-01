@@ -1,0 +1,6 @@
+framework module CDAlertView {
+  umbrella header "CDAlertView-umbrella.h"
+
+  export *
+  module * { export * }
+}
