@@ -76,8 +76,8 @@ class QRScannerController: UIViewController {
         captureSession.startRunning()
         
         // Move the message label and top bar to the front
-        view.bringSubview(toFront: messageLabel)
-        view.bringSubview(toFront: topbar)
+        view.bringSubviewToFront(messageLabel)
+        view.bringSubviewToFront(topbar)
         
         // Initialize QR Code Frame to highlight the QR code
         qrCodeFrameView = UIView()
@@ -86,7 +86,7 @@ class QRScannerController: UIViewController {
             qrCodeFrameView.layer.borderColor = UIColor.green.cgColor
             qrCodeFrameView.layer.borderWidth = 2
             view.addSubview(qrCodeFrameView)
-            view.bringSubview(toFront: qrCodeFrameView)
+            view.bringSubviewToFront(qrCodeFrameView)
         }
     }
 
@@ -104,16 +104,16 @@ class QRScannerController: UIViewController {
         }
         
         let alertPrompt = UIAlertController(title: "Open App", message: "You're going to open \(decodedURL)", preferredStyle: .actionSheet)
-        let confirmAction = UIAlertAction(title: "Confirm", style: UIAlertActionStyle.default, handler: { (action) -> Void in
+        let confirmAction = UIAlertAction(title: "Confirm", style: UIAlertAction.Style.default, handler: { (action) -> Void in
             
             if let url = URL(string: decodedURL) {
                 if UIApplication.shared.canOpenURL(url) {
-                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                    UIApplication.shared.open(url)
                 }
             }
         })
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil)
         
         alertPrompt.addAction(confirmAction)
         alertPrompt.addAction(cancelAction)
